@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  background-color: #0C0C0C;
+  font-family: 'Poppins', sans-serif;
+  color: #FAFAFA;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+header h1 span {
+  color: #BEBEE3;
+}
+
+header p {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.input-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+input, select, button {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #C9F31D;
+  cursor: pointer;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1E1E1E;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.task-card span {
+  flex: 1;
+}
+
+.actions button {
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.filter-bar {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-bar button {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #1E1E1E;
+  border: 1px solid #888;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filter-bar button.active {
+  background-color: #C9F31D;
+  color: #000;
+}
