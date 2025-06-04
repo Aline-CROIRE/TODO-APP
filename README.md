@@ -28,7 +28,7 @@ A responsive To-Do planning web application built by Aline NIYONIZERA using Reac
 1. Clone the repository:
 
 \`\`\`bash
-git clone [https://github.com/yourusername/todo-planning-app.git](https://github.com/Aline-CROIRE/TODO-APP.git)
+git clone [https://github.com/Aline-CROIRE/TODO-APP.git](https://github.com/Aline-CROIRE/TODO-APP.git)
 cd todo-app
 \`\`\`
 
