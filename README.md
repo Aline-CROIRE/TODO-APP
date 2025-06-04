@@ -1,8 +1,8 @@
 # To-Do  App
 
-A responsive To-Do planning web application built with React, TypeScript, and plain CSS that allows users to add, edit, delete, and filter tasks based on their duration.
+A responsive To-Do planning web application built by Aline NIYONIZERA using React, TypeScript, and plain CSS that allows users to add, edit, delete, and filter tasks based on their duration.
 
-![To-Do Planning App Screenshot](https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-o70dka2FbqE7Q9y5wMPpnOllB4ODSP.png)
+![To-Do Planning App Screenshot](https://todo-app-8yqz.vercel.app/)
 
 ## Features
 
@@ -26,8 +26,8 @@ A responsive To-Do planning web application built with React, TypeScript, and pl
 1. Clone the repository:
 
 \`\`\`bash
-git clone https://github.com/yourusername/todo-planning-app.git
-cd todo-planning-app
+git clone [https://github.com/yourusername/todo-planning-app.git](https://github.com/Aline-CROIRE/TODO-APP.git)
+cd todo-app
 \`\`\`
 
 2. Install dependencies:
@@ -46,7 +46,7 @@ npm start
 yarn start
 \`\`\`
 
-4. Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
+4. Open [http://localhost:5173/(http://localhost:5173/) to view the app in your browser.
 
 ## Project Structure
 
