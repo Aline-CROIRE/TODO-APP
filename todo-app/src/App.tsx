@@ -1,59 +1,76 @@
-import React, { useState } from "react";
-import TaskInput from "./components/TaskInInput";
-import TaskCard from "./components/TaskCard";
-import FilterBar from "./components/FilterBar";
-import type { Task, Duration } from "./types/index";
-import "./styles/App.css";
+"use client"
 
-const App: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [filter, setFilter] = useState<Duration | "All">("All");
-  const [editingTask, setEditingTask] = useState<Task | null>(null);
+import { useState, useEffect } from "react"
+import "./App.css"
+import TaskForm from "./components/TaskForm"
+import TaskList from "./components/TaskList"
+import FilterBar from "./components/FilterBar"
 
-  const filtered = filter === "All" ? tasks : tasks.filter((t) => t.duration === filter);
+export type Duration = "Daily" | "Weekly" | "Monthly" | "Yearly"
+export type Filter = "All" | Duration
 
-  const handleAdd = (task: Task) => {
-    if (editingTask) {
-      setTasks((prev) =>
-        prev.map((t) => (t.id === editingTask.id ? task : t))
-      );
-      setEditingTask(null);
-    } else {
-      setTasks([...tasks, task]);
+export interface Task {
+  id: string
+  name: string
+  duration: Duration
+}
+
+function App() {
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const savedTasks = localStorage.getItem("tasks")
+    return savedTasks ? JSON.parse(savedTasks) : []
+  })
+  const [filter, setFilter] = useState<Filter>("All")
+  const [editingTask, setEditingTask] = useState<Task | null>(null)
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+  }, [tasks])
+
+  const addTask = (name: string, duration: Duration) => {
+    const newTask: Task = {
+      id: Date.now().toString(),
+      name,
+      duration,
     }
-  };
+    setTasks([...tasks, newTask])
+  }
 
-  const handleDelete = (id: string) => {
-    setTasks(tasks.filter((t) => t.id !== id));
-  };
+  const deleteTask = (id: string) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
 
-  const handleEdit = (task: Task) => {
-    setEditingTask(task);
-  };
+  const updateTask = (id: string, name: string, duration: Duration) => {
+    setTasks(tasks.map((task) => (task.id === id ? { ...task, name, duration } : task)))
+    setEditingTask(null)
+  }
+
+  const filteredTasks = filter === "All" ? tasks : tasks.filter((task) => task.duration === filter)
 
   return (
-    <div className="container">
-      <header>
-        <h1>Make a <span>better</span> plan for your life</h1>
-        <p>Whoever you are , Whatever you are looking for, we have the perfect place for you</p>
-      </header>
+    <div className="app">
+      <div className="hero">
+        <h1>
+          Make a better plan <br />
+          for your life
+        </h1>
+        <p>Whoever you are, Whatever you are looking for, we have the perfect place for you</p>
 
-      <TaskInput onAdd={handleAdd} />
-      <FilterBar selected={filter} onChange={setFilter} />
+        <TaskForm
+          onAddTask={addTask}
+          editingTask={editingTask}
+          onUpdateTask={updateTask}
+          onCancelEdit={() => setEditingTask(null)}
+        />
+      </div>
 
-      <div className="task-list">
-        {filtered.map((task, i) => (
-          <TaskCard
-            key={task.id}
-            index={i}
-            task={task}
-            onDelete={handleDelete}
-            onEdit={handleEdit}
-          />
-        ))}
+      <div className="content">
+        <FilterBar currentFilter={filter} onFilterChange={setFilter} />
+
+        <TaskList tasks={filteredTasks} onDelete={deleteTask} onEdit={setEditingTask} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

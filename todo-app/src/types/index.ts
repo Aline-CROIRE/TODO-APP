@@ -1,4 +1,4 @@
-export type Duration = "Daily" | "Weekly" | "Monthly" | "Yearly";
+export type Duration = "Daily" | "Weekly" | "Monthly" | "Year";
 
 export interface Task {
   id: string;

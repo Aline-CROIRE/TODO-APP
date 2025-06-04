@@ -1,26 +1,28 @@
-import React from "react";
-import type { Duration } from "../types/index";
+"use client"
 
-interface Props {
-  selected: Duration | "All";
-  onChange: (d: Duration | "All") => void;
+import type { Filter } from "../App"
+
+interface FilterBarProps {
+  currentFilter: Filter
+  onFilterChange: (filter: Filter) => void
 }
 
-const FilterBar: React.FC<Props> = ({ selected, onChange }) => {
-  const filters: (Duration | "All")[] = ["All", "Daily", "Weekly", "Monthly", "Yearly"];
+const FilterBar = ({ currentFilter, onFilterChange }: FilterBarProps) => {
+  const filters: Filter[] = ["All", "Daily", "Weekly", "Monthly", "Yearly"]
+
   return (
     <div className="filter-bar">
-      {filters.map((f) => (
+      {filters.map((filter) => (
         <button
-          key={f}
-          className={selected === f ? "active" : ""}
-          onClick={() => onChange(f)}
+          key={filter}
+          className={`filter-button ${currentFilter === filter ? "active" : ""}`}
+          onClick={() => onFilterChange(filter)}
         >
-          {f}
+          {filter}
         </button>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default FilterBar;
+export default FilterBar
