@@ -51,7 +51,7 @@ function App() {
     <div className="app">
       <div className="hero">
         <h1>
-          Make a better plan <br />
+          Make a <span style={{ color: "#BEBEE3" }}>better</span> plan <br />
           for your life
         </h1>
         <p>Whoever you are, Whatever you are looking for, we have the perfect place for you</p>

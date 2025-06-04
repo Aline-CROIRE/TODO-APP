@@ -1,12 +1,16 @@
 :root {
-  --bg-color: #1a2421;
+  --bg-color: #121212;
+  --card-bg: #1a2421;
   --text-color: #e9e9e9;
   --accent-color: #c2c27a;
-  --input-bg: #2a3430;
+  --input-bg: rgba(255, 255, 255, 0.05);
   --button-bg: var(--accent-color);
   --button-text: #1a2421;
   --border-radius: 50px;
   --task-border: #3a443f;
+  --filter-active-bg: #e9e9e9;
+  --filter-active-text: #121212;
+  --filter-inactive-bg: #1e2422;
 }
 
 * {
@@ -21,25 +25,30 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   min-height: 100vh;
+  padding: 20px;
 }
 
 .app {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  border-radius: 24px;
+  overflow: hidden;
 }
 
 /* Hero Section */
 .hero {
-  padding: 2rem 0;
-  margin-bottom: 2rem;
+  background-color: var(--card-bg);
+  padding: 3rem 2rem;
+  border-radius: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: var(--accent-color);
   margin-bottom: 1rem;
   line-height: 1.2;
+  font-weight: 500;
 }
 
 .hero p {
@@ -51,31 +60,32 @@ body {
 
 /* Task Form */
 .task-form {
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .form-controls {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .dropdown-container {
   position: relative;
-  min-width: 120px;
+  width: 120px;
 }
 
 .dropdown-button {
   width: 100%;
   padding: 0.75rem 1rem;
-  background-color: var(--input-bg);
+  background-color: transparent;
   color: var(--text-color);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--border-radius);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.9rem;
 }
 
 .dropdown-arrow {
@@ -93,11 +103,13 @@ body {
   margin-top: 5px;
   z-index: 10;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-menu div {
   padding: 0.75rem 1rem;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .dropdown-menu div:hover {
@@ -106,12 +118,13 @@ body {
 
 .task-input {
   flex: 1;
-  padding: 0.75rem 1rem;
-  background-color: var(--input-bg);
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
   color: var(--text-color);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--border-radius);
   min-width: 200px;
+  font-size: 0.9rem;
 }
 
 .add-button {
@@ -122,6 +135,7 @@ body {
   border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .cancel-button {
@@ -144,33 +158,42 @@ body {
 
 .filter-button {
   padding: 0.5rem 1rem;
-  background-color: var(--input-bg);
+  background-color: var(--filter-inactive-bg);
   color: var(--text-color);
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .filter-button.active {
-  background-color: var(--accent-color);
-  color: var(--button-text);
+  background-color: var(--filter-active-bg);
+  color: var(--filter-active-text);
+}
+
+.filter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Task List */
 .task-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .task-item {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border: 1px solid var(--task-border);
   border-radius: var(--border-radius);
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: transparent;
 }
 
 .task-number {
@@ -180,10 +203,12 @@ body {
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .task-name {
   flex: 1;
+  font-size: 0.95rem;
 }
 
 .task-actions {
@@ -193,7 +218,7 @@ body {
 
 .edit-button,
 .delete-button {
-  background: none;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   cursor: pointer;
   color: var(--text-color);
@@ -210,7 +235,7 @@ body {
 }
 
 .delete-button {
-  background-color: rgba(255, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #ff6b6b;
 }
 
@@ -220,14 +245,22 @@ body {
   padding: 2rem 0;
 }
 
+.content {
+  padding: 0 1rem;
+}
+
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .form-controls {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .dropdown-container {
