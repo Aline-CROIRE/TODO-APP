@@ -2,7 +2,7 @@
 
 A responsive To-Do planning web application built by Aline NIYONIZERA using React, TypeScript, and plain CSS that allows users to add, edit, delete, and filter tasks based on their duration.
 
-![To-Do Planning App Screenshot](![image](https://github.com/user-attachments/assets/456e6999-68c2-4bb9-80c4-d191d745a4be)
+![To-Do Planning App Screenshot](https://github.com/user-attachments/assets/456e6999-68c2-4bb9-80c4-d191d745a4be)
 
 
 # Deployed Link:(https://todo-app-8yqz.vercel.app/)
