@@ -4,7 +4,7 @@ A responsive To-Do planning web application built by Aline NIYONIZERA using Reac
 
 ![To-Do Planning App Screenshot](https://github.com/user-attachments/assets/0b35676e-3227-4d28-bc30-b74d4ebd19a7)
 
-# Deployed Link:![Deployed Link](https://todo-app-8yqz.vercel.app/)
+# Deployed Link:(https://todo-app-8yqz.vercel.app/)
 
 ## Features
 
